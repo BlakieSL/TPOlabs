@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        th, td {
+            border: 2px solid #000000;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <title>Random data</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Random data</h1>
+<form th:action="@{/}" method="post">
+    <div>
+        <label>Amount</label>
+        <input type="number" name="amount">
+    </div>
+    <div>
+        <label>Language</label>
+        <select name="language">
+            <option th:each="language : ${languages}" th:value="${language}" th:text="${language}"></option>
+        </select>
+    </div>
+    <fieldset>
+        <legend>Additional attributes</legend>
+        <div><label>
+            <input type="checkbox" name="additionalInformation" value="address">
+        </label> Address</div>
+        <div><label>
+            <input type="checkbox" name="additionalInformation" value="university">
+        </label> University</div>
+        <div><label>
+            <input type="checkbox" name="additionalInformation" value="country">
+        </label> Country</div>
+        <div><label>
+            <input type="checkbox" name="additionalInformation" value="animal">
+        </label> Animal</div>
+        <div><label>
+            <input type="checkbox" name="additionalInformation" value="artist">
+        </label> Artist</div>
+        <div><label>
+            <input type="checkbox" name="additionalInformation" value="book">
+        </label> Book</div>
+        <div><label>
+            <input type="checkbox" name="additionalInformation" value="color">
+        </label> Color</div>
+        <div><label>
+            <input type="checkbox" name="additionalInformation" value="food">
+        </label> Food</div>
+    </fieldset>
+    <button type="submit">Submit</button>
+</form>
+
+<div th:if="${not #lists.isEmpty(personList)}">
+    <h2>Random Data</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>DateOfBirth</th>
+            <th th:each="c : ${personList[0].additionalData.keySet()}" th:text="${c}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person : ${personList}">
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.surname}"></td>
+            <td th:text="${person.dateBirth}"></td>
+            <td th:each="c : ${person.additionalData.entrySet()}" th:text="${c.value}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
