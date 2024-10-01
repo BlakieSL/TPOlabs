@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formatter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #D4D3D3;
+            margin: 40px;
+        }
+        pre {
+            background-color: #ffffff;
+            padding: 10px;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+        input, textarea {
+            width: 95%;
+            padding: 8px;
+            margin-top: 4px;
+            margin-bottom: 16px;
+            border: 1px solid #5D5D5D;
+        }
+        button {
+            background-color: #76D18D;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+<body>
+    <form th:action="@{/}" method="post">
+        <label>
+            <textarea name="text" placeholder="write code here" rows="20" cols="100"></textarea>
+        </label><br>
+        <label>
+            <input type="text" name="id" placeholder="Enter id" />
+        </label><br>
+        <label>
+            <input type="number" name="time" placeholder="how long to keep(minutes)"/>
+        </label><br>
+        <button type="submit">Format Code</button>
+    </form>
+
+    <div th:if="${output}">
+        <h1>Original</h1>
+        <pre th:text="${input}"></pre>
+        <h1>Formatted</h1>
+        <pre th:text="${output}"></pre>
+    </div>
+    <div th:if="${error}">
+        <p th:text="${error}"></p>
+    </div>
+
+    <form th:action="@{/findCode}" method="get">
+        <label>
+            <input type="text" name="id" placeholder="Enter id" />
+        </label><br>
+        <button type="submit">search</button>
+    </form>
+    <div th:if="${code}">
+        <h1>Found code</h1>
+        <pre th:text="${code}"></pre>
+    </div>
+    <div th:if="${error}">
+        <p th:text="${error}"></p>
+    </div>
+</body>
+</html>
