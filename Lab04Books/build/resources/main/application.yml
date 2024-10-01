@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: Lab04
+  h2:
+    console:
+      path: /console
+  datasource:
+    url: jdbc:h2:mem:books
+    username: s28250
+    password:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+  sql:
+    init:
+      data-locations: classpath:sql-data/publishers.sql,classpath:sql-data/authors.sql,classpath:sql-data/books.sql
