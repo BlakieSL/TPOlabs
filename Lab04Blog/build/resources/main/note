@@ -1,0 +1,12 @@
+Cardinalities
+Article - Blog /////zero or many
+Article - User /////zero or many
+
+User - Article /////zero or one
+Blog - Article /////zero or one
+
+User - Blog /////zero or one
+Blog - User /////zero or one
+
+User - Role /////zero or many
+Role -User /////zero or many
