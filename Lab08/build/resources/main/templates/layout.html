@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="~{fragments::Head}">
+    <meta  charset="UTF-8" />
+    <title layout:title-pattern="${CONTENT_TITLE}">Default TITLE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+
+</head>
+<body class="d-flex flex-column">
+<header th:replace="~{fragments::Header}"></header>
+<main layout:fragment="content" class="container pt-5 pb-5"></main>
+<footer th:replace="~{fragments::Footer}"></footer>
+</body>
+</html>
