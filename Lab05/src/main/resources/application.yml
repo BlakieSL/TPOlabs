@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: Lab05
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
